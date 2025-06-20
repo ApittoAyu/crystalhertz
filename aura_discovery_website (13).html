@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <title>Crystal Hertz - Temukan Kristal Aura Dirimu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, 
+                #ffeef8 0%, 
+                #f0f4ff 25%, 
+                #fff0f8 50%, 
+                #f8f0ff 75%, 
+                #ffeef8 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 2rem;
+        }
+
+        .section.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .section.active .challenge h2 {
+            animation-delay: 0.3s;
+        }
+
+        .section.active .choice-card {
+            animation: slideInUp 0.8s ease forwards;
+        }
+
+        .section.active .choice-card:nth-child(1) { animation-delay: 0.1s; }
+        .section.active .choice-card:nth-child(2) { animation-delay: 0.2s; }
+        .section.active .choice-card:nth-child(3) { animation-delay: 0.3s; }
+        .section.active .choice-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Landing Page */
+        .landing {
+            background: linear-gradient(135deg, 
+                rgba(255, 182, 193, 0.2), 
+                rgba(221, 160, 221, 0.2), 
+                rgba(173, 216, 230, 0.2),
+                rgba(255, 218, 185, 0.2));
+            text-align: center;
+            color: #2d3748;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-logo {
+            margin-bottom: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .brand-logo h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowText 3s ease infinite;
+            text-shadow: 0 0 30px rgba(255, 107, 107, 0.3);
+        }
+
+        @keyframes rainbowText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef, #ff9a9e);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 3s ease-in-out infinite;
+            text-shadow: 0 0 40px rgba(255, 154, 158, 0.4);
+        }
+
+        @keyframes glow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 20px rgba(255, 154, 158, 0.4));
+                background-position: 0% 50%;
+            }
+            50% { 
+                filter: drop-shadow(0 0 30px rgba(254, 207, 239, 0.6));
+                background-position: 100% 50%;
+            }
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #5a6c7d;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 0.8;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef, #ff9a9e);
+            background-size: 400% 400%;
+            color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(255, 154, 158, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: gradientMove 3s ease infinite;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(255, 154, 158, 0.4);
+        }
+
+        .btn-sparkle {
+            animation: sparkle 2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
+        }
+
+        /* Challenge Steps */
+        .challenge {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .challenge::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255, 154, 158, 0.3), transparent);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .challenge h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #4a5568;
+            font-weight: 300;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: questionGlow 2s ease-in-out infinite alternate;
+            position: relative;
+        }
+
+        @keyframes questionGlow {
+            from { filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.3)); }
+            to { filter: drop-shadow(0 0 20px rgba(78, 205, 196, 0.4)); }
+        }
+
+        .choice-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 3px solid transparent;
+            backdrop-filter: blur(20px);
+            touch-action: manipulation;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255, 154, 158, 0.1);
+        }
+
+        .choice-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 154, 158, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .choice-card:hover::before {
+            left: 100%;
+        }
+
+        .choice-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(255, 154, 158, 0.2);
+            border-color: #ff9a9e;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .choice-card.selected {
+            border-color: #ff9a9e;
+            background: linear-gradient(135deg, rgba(255, 154, 158, 0.15), rgba(254, 207, 239, 0.15));
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 154, 158, 0.3);
+        }
+
+        .choice-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+            animation: iconFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-5px) rotate(2deg); }
+            66% { transform: translateY(5px) rotate(-2deg); }
+        }
+
+        .choice-text {
+            font-size: 1.3rem;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .choice-card:hover .choice-text {
+            color: #2d3748;
+        }
+
+        .choices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Result Page */
+        .result {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .result::before {
+            content: '✨';
+            position: absolute;
+            top: -30px;
+            left: 20%;
+            font-size: 2rem;
+            animation: sparkleMove 4s ease-in-out infinite;
+        }
+
+        .result::after {
+            content: '💎';
+            position: absolute;
+            top: -20px;
+            right: 20%;
+            font-size: 1.5rem;
+            animation: sparkleMove 4s ease-in-out infinite 2s;
+        }
+
+        @keyframes sparkleMove {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+            50% { transform: translateY(-15px) rotate(180deg); opacity: 1; }
+        }
+
+        .aura-display {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            position: relative;
+            animation: auraGlow 4s ease-in-out infinite;
+            box-shadow: 0 0 60px rgba(255, 154, 158, 0.4);
+        }
+
+        @keyframes auraGlow {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 60px rgba(255, 154, 158, 0.4);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 0 80px rgba(254, 207, 239, 0.6);
+            }
+        }
+
+        .aura-inner {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: innerGlow 3s ease-in-out infinite reverse;
+        }
+
+        @keyframes innerGlow {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        .result h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #4a5568;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: resultTitle 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes resultTitle {
+            from { filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.3)); }
+            to { filter: drop-shadow(0 0 20px rgba(69, 183, 209, 0.4)); }
+        }
+
+        .aura-name {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            animation: nameGlow 2s ease-in-out infinite alternate;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        @keyframes nameGlow {
+            from { transform: scale(1); }
+            to { transform: scale(1.02); }
+        }
+
+        .aura-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            color: #5a6c7d;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(255, 154, 158, 0.1);
+            animation: fadeInDesc 1s ease 0.5s both;
+        }
+
+        @keyframes fadeInDesc {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 0.8;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.9), rgba(255, 154, 158, 0.3));
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 25px rgba(255, 154, 158, 0.2);
+            animation: navFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes navFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            color: white;
+            transform: scale(1.15) translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 154, 158, 0.4);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 6px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef, #ff9a9e);
+            background-size: 400% 400%;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            animation: progressGlow 3s ease infinite;
+            box-shadow: 0 2px 10px rgba(255, 154, 158, 0.3);
+        }
+
+        @keyframes progressGlow {
+            0% { 
+                background-position: 0% 50%;
+                box-shadow: 0 2px 10px rgba(255, 154, 158, 0.3);
+            }
+            50% { 
+                background-position: 100% 50%;
+                box-shadow: 0 2px 15px rgba(254, 207, 239, 0.5);
+            }
+            100% { 
+                background-position: 0% 50%;
+                box-shadow: 0 2px 10px rgba(255, 154, 158, 0.3);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .challenge h2 {
+                font-size: 2.2rem;
+            }
+
+            .brand-logo h3 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 1rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .challenge h2 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .choices-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                max-width: 400px;
+                margin: 0 auto 2rem;
+            }
+            
+            .choice-card {
+                padding: 1.5rem;
+                min-height: 120px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                border-radius: 20px;
+            }
+            
+            .choice-icon {
+                font-size: 3rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .choice-text {
+                font-size: 1.1rem;
+                text-align: center;
+            }
+            
+            .aura-display {
+                width: 220px;
+                height: 220px;
+            }
+            
+            .aura-inner {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .result h2 {
+                font-size: 2rem;
+            }
+            
+            .aura-name {
+                font-size: 1.5rem;
+            }
+            
+            .aura-description {
+                font-size: 1rem;
+                padding: 1.5rem;
+                margin: 0 1rem 2rem;
+            }
+            
+            .btn-primary {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                margin: 0.5rem;
+                width: auto;
+                min-width: 180px;
+            }
+            
+            .nav-buttons {
+                bottom: 1rem;
+                right: 1rem;
+            }
+
+            .nav-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.1rem;
+            }
+
+            .brand-logo h3 {
+                font-size: 1.5rem;
+            }
+
+            .brand-logo {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .challenge h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+                padding: 0 1rem;
+            }
+            
+            .choice-card {
+                padding: 1.2rem;
+                min-height: 100px;
+                margin: 0 0.5rem;
+            }
+            
+            .choice-icon {
+                font-size: 2.5rem;
+            }
+            
+            .choice-text {
+                font-size: 1rem;
+            }
+            
+            .aura-display {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .aura-inner {
+                width: 130px;
+                height: 130px;
+            }
+            
+            .btn-primary {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+                display: block;
+                margin: 0.5rem auto;
+                width: 200px;
+            }
+
+            .brand-logo h3 {
+                font-size: 1.3rem;
+            }
+
+            .aura-description {
+                padding: 1rem;
+                margin: 0 0.5rem 1.5rem;
+            }
+        }
+
+        /* Landscape orientation adjustments */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .section {
+                min-height: auto;
+                padding: 1rem 2rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .hero-content p {
+                margin-bottom: 1.5rem;
+            }
+            
+            .challenge h2 {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .choices-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .choice-card {
+                padding: 1rem;
+                min-height: 80px;
+            }
+            
+            .choice-icon {
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .brand-logo {
+                margin-bottom: 1rem;
+            }
+
+            .brand-logo h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Background Animations */
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: magicalFloat 8s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        .particle:nth-child(odd) {
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #ff9a9e, #fecfef);
+            box-shadow: 0 0 20px rgba(255, 154, 158, 0.5);
+        }
+
+        .particle:nth-child(even) {
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, #a8edea, #fed6e3);
+            box-shadow: 0 0 15px rgba(168, 237, 234, 0.5);
+        }
+
+        .particle:nth-child(3n) {
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #ffecd2, #fcb69f);
+            box-shadow: 0 0 10px rgba(255, 236, 210, 0.5);
+        }
+
+        @keyframes magicalFloat {
+            0%, 100% { 
+                transform: translateY(0px) translateX(0px) rotate(0deg); 
+                opacity: 0.6; 
+            }
+            25% { 
+                transform: translateY(-30px) translateX(10px) rotate(90deg); 
+                opacity: 0.8; 
+            }
+            50% { 
+                transform: translateY(-15px) translateX(-10px) rotate(180deg); 
+                opacity: 0.4; 
+            }
+            75% { 
+                transform: translateY(-45px) translateX(15px) rotate(270deg); 
+                opacity: 0.9; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <div class="floating-particles" id="particles"></div>
+
+    <!-- Landing Page -->
+    <section class="section landing active" id="landing">
+        <div class="hero-content">
+            <div class="brand-logo">
+                <h3>✨ Crystal Hertz ✨</h3>
+            </div>
+            <h1>Temukan Kristal Aura Dirimu</h1>
+            <p>Ikuti 6 pertanyaan mendalam dan temukan kristal yang mencerminkan energi dan kepribadianmu</p>
+            <button class="btn-primary" onclick="startJourney()">
+                <span class="btn-sparkle">✨</span>
+                Mulai Perjalanan Magis
+                <span class="btn-sparkle">✨</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Challenge 1: Suasana Favorit -->
+    <section class="section challenge" id="challenge1">
+        <div>
+            <h2>Pilih tempat yang paling menenangkan hatimu</h2>
+            <div class="choices-grid">
+                <div class="choice-card" onclick="selectChoice(1, 'beach', this)" data-choice="beach">
+                    <span class="choice-icon">🌊</span>
+                    <div class="choice-text">Pantai tropis</div>
+                </div>
+                <div class="choice-card" onclick="selectChoice(1, 'night-sea', this)" data-choice="night-sea">
+                    <span class="choice-icon">🌌</span>
+                    <div class="choice-text">Laut malam</div>
+                </div>
+                <div class="choice-card" onclick="selectChoice(1, 'mountain', this)" data-choice="mountain">
+                    <span class="choice-icon">⛰</span>
+                    <div class="choice-text">Pegunungan berkabut</div>
+                </div>
+                <div class="choice-card" onclick="selectChoice(1, 'forest', this)" data-choice="forest">
+                    <span class="choice-icon">🌿</span>
+                    <div class="choice-text">Hutan pagi</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenge 2: Waktu Favorit -->
+    <section class="section challenge" id="challenge2">
+        <div>
+            <h2>Kapan kamu merasa paling hidup?</h2>
+            <div class="choices-grid">
+                <div class="choice-card" onclick="selectChoice(2, 'morning', this)" data-choice="morning">
+                    <span class="choice-icon">☀</span>
+                    <div class="choice-text">Pagi cerah</div>
+                </div>
+                <div class="choice-card" onclick="selectChoice(2, 'afternoon', this)" data-choice="afternoon">
+                    <span class="choice-icon">🌤</span>
+                    <div class="choice-text">Sore berangin</div>
+                </div>
+                <div class="choice-card" onclick="selectChoice(2, 'night', this)" data-choice="night">
+                    <span class="choice-icon">🌙</span>
+                    <div class="choice-text">Malam hening</div>
+                </div>
+                <div class="choice-card" onclick="selectChoice(2, 'rain', this)" data-choice="rain">
+                    <span class="choice-icon">🌧</span>
+                    <div class="choice-text">Hujan senja</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenge 3: Perasaan -->
+    <section class="section challenge" id="challenge3">
+        <div>
+            <h2>Apa yang paling kamu rasakan saat ini?</h2>
+            <div class="choices-grid">
+                <div class="choice-card" onclick="selectChoice(3, 'calm', this)" data-choice="calm">
+                    <span class="choice-icon">🕯</span>
+                    <div class="choice-text">Tenang dan damai</div>
+                </div>
+                <div class="choice-card" onclick="selectChoice(3, 'energetic', this)" data-choice="energetic">
+                    <span class="choice-icon">⚡</span>
+                    <div class="choice-text">Enerjik dan semangat</div>
+                </div>
+                <div class="choice-card" onclick="selectChoice(3, 'focused', this)" data-choice="focused">
+                    <span class="choice-icon">🎯</span>
+                    <div class="choice-text">Fokus dan kuat</div>
+                </div>
+                <div class="choice-card" onclick="selectChoice(3, 'hopeful', this)" data-choice="hopeful">
+                    <span class="choice-icon">🌱</span>
+                    <div class="choice-text">Rapuh tapi berharap</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenge 4: Elemen Favorit -->
+    <section class="section challenge" id="challenge4">
+        <div>
+            <h2>Elemen alam mana yang paling menarik bagimu?</h2>
+            <div class="choices-grid">
+                <div class="choice-card" onclick="selectChoice(4, 'earth', this)" data-choice="earth">
+                    <span class="choice-icon">🌍</span>
+                    <div class="choice-text">Tanah & Bebatuan</div>
+                </div>
+                <div class="choice-card" onclick="selectChoice(4, 'water', this)" data-choice="water">
+                    <span class="choice-icon">💧</span>
+                    <div class="choice-text">Air & Sungai</div>
+                </div>
+                <div class="choice-card" onclick="selectChoice(4, 'fire', this)" data-choice="fire">
+                    <span class="choice-icon">🔥</span>
+                    <div class="choice-text">Api & Cahaya</div>
+                </div>
+                <div class="choice-card" onclick="selectChoice(4, 'air', this)" data-choice="air">
+                    <span class="choice-icon">💨</span>
+                    <div class="choice-text">Angin & Udara</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenge 5: Aktivitas Favorit -->
+    <section class="section challenge" id="challenge5">
+        <div>
+            <h2>Aktivitas mana yang paling membuatmu bahagia?</h2>
+            <div class="choices-grid">
+                <div class="choice-card" onclick="selectChoice(5, 'meditate', this)" data-choice="meditate">
+                    <span class="choice-icon">🧘</span>
+                    <div class="choice-text">Meditasi & Refleksi</div>
+                </div>
+                <div class="choice-card" onclick="selectChoice(5, 'create', this)" data-choice="create">
+                    <span class="choice-icon">🎨</span>
+                    <div class="choice-text">Berkreasi & Menulis</div>
+                </div>
+                <div class="choice-card" onclick="selectChoice(5, 'help', this)" data-choice="help">
+                    <span class="choice-icon">🤝</span>
+                    <div class="choice-text">Membantu Orang Lain</div>
+                </div>
+                <div class="choice-card" onclick="selectChoice(5, 'explore', this)" data-choice="explore">
+                    <span class="choice-icon">🗺</span>
+                    <div class="choice-text">Menjelajah & Berpetualang</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenge 6: Tantangan Hidup -->
+    <section class="section challenge" id="challenge6">
+        <div>
+            <h2>Hal apa yang paling ingin kamu atasi dalam hidup?</h2>
+            <div class="choices-grid">
+                <div class="choice-card" onclick="selectChoice(6, 'fear', this)" data-choice="fear">
+                    <span class="choice-icon">😰</span>
+                    <div class="choice-text">Ketakutan & Keraguan</div>
+                </div>
+                <div class="choice-card" onclick="selectChoice(6, 'stress', this)" data-choice="stress">
+                    <span class="choice-icon">😵‍💫</span>
+                    <div class="choice-text">Stress & Kecemasan</div>
+                </div>
+                <div class="choice-card" onclick="selectChoice(6, 'confidence', this)" data-choice="confidence">
+                    <span class="choice-icon">💪</span>
+                    <div class="choice-text">Kurang Percaya Diri</div>
+                </div>
+                <div class="choice-card" onclick="selectChoice(6, 'clarity', this)" data-choice="clarity">
+                    <span class="choice-icon">🤔</span>
+                    <div class="choice-text">Kebingungan & Kehilangan Arah</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section result" id="result">
+        <div>
+            <div class="aura-display" id="auraDisplay">
+                <div class="aura-inner" id="auraInner"></div>
+            </div>
+            <h2>Warna Aura Kamu</h2>
+            <div class="aura-name" id="auraName"></div>
+            <div class="aura-description" id="auraDescription"></div>
+            <button class="btn-primary" onclick="restart()">Coba Lagi</button>
+            <button class="btn-primary" onclick="viewBracelets()" style="margin-left: 1rem; background: linear-gradient(45deg, #48bb78, #38b2ac);">Lihat Gelangnya</button>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="nav-buttons">
+        <button class="nav-btn" onclick="previousStep()" id="prevBtn">‹</button>
+        <button class="nav-btn" onclick="nextStep()" id="nextBtn">›</button>
+    </div>
+
+    <script>
+        let currentStep = 0;
+        let choices = {};
+        
+        const auraTypes = {
+            'rose-quartz': {
+                name: '💗 Rose Quartz',
+                description: 'Kamu memiliki energi cinta dan kelembutan yang luar biasa. Pribadi yang mengutamakan keharmonisan, keseimbangan, dan positivitas dalam hidup. Kamu mudah menarik cinta dan kasih sayang dari orang lain karena aura hangat yang terpancar dari dalam dirimu.',
+                personality: 'Penyayang, empati tinggi, pembawa damai, romantis, dan selalu melihat kebaikan dalam orang lain.',
+                colors: ['#f093fb', '#f5576c'],
+                background: 'linear-gradient(45deg, #f093fb, #f5576c)'
+            },
+            'amethyst': {
+                name: '💜 Amethyst',
+                description: 'Energi spiritual dan kebijaksanaan mengalir kuat dalam dirimu. Kamu memiliki kemampuan alami untuk meredakan stres, kecemasan, dan amarah. Jiwa yang tenang dan selalu mencari kedamaian batin serta pertumbuhan spiritual.',
+                personality: 'Bijaksana, spiritual, penyembuh alami, introvert yang dalam, dan pencinta kedamaian.',
+                colors: ['#8B5FBF', '#6A4C93'],
+                background: 'linear-gradient(45deg, #8B5FBF, #6A4C93)'
+            },
+            'citrine': {
+                name: '🧡 Citrine',
+                description: 'Aura yang bersinar dengan optimisme dan energi manifestasi. Kamu memiliki kemampuan alami untuk menarik kesuksesan, kemakmuran, dan kelimpahan. Energi positif dan antusiasme yang kamu pancarkan menginspirasi orang lain.',
+                personality: 'Optimis, ambisius, leadership natural, kreatif, dan pembawa keberuntungan.',
+                colors: ['#FFD700', '#FFA500'],
+                background: 'linear-gradient(45deg, #FFD700, #FFA500)'
+            },
+            'black-obsidian': {
+                name: '🖤 Black Obsidian',
+                description: 'Kamu memiliki aura pelindung yang sangat kuat dan misterius. Energi transformatif yang dalam mengalir dalam dirimu, mampu mendetoksifikasi energi negatif dan melindungi orang-orang terkasih. Jiwa yang kuat dan tidak mudah tergoyahkan.',
+                personality: 'Protektif, kuat mental, misterius, transformatif, dan memiliki intuisi tajam.',
+                colors: ['#2d3748', '#1a202c'],
+                background: 'linear-gradient(45deg, #2d3748, #1a202c)'
+            },
+            'selenite': {
+                name: '🤍 Selenite',
+                description: 'Aura kemurnian dan pencerahan spiritual. Kamu memiliki kemampuan untuk membersihkan energi negatif dan kebingungan, membawa kedamaian mendalam ke mana pun kamu pergi. Jiwa yang jernih dan selalu mencari kebenaran.',
+                personality: 'Jernih pikiran, spiritual tinggi, pembersih energi, tenang, dan pencari kebenaran.',
+                colors: ['#F8F8FF', '#E6E6FA'],
+                background: 'linear-gradient(45deg, #F8F8FF, #E6E6FA)'
+            },
+            'tigers-eye': {
+                name: '🟤 Tigers Eye',
+                description: 'Energi perlindungan dan keberuntungan mengalir kuat dalam dirimu. Kamu memiliki mental yang jernih dan kemampuan untuk membuat keputusan bijak. Aura kekuatan dan keberanian yang melindungi diri dan orang lain.',
+                personality: 'Berani, protektif, pembuat keputusan yang baik, beruntung, dan mental yang kuat.',
+                colors: ['#CD853F', '#8B4513'],
+                background: 'linear-gradient(45deg, #CD853F, #8B4513)'
+            },
+            'lapis-lazuli': {
+                name: '💙 Lapis Lazuli',
+                description: 'Aura pencerahan dan kesadaran diri yang tinggi. Kamu memiliki kemampuan untuk memahami diri sendiri dengan mendalam dan membawa kedamaian serta harmoni dalam hubungan. Jiwa yang bijak dan selalu haus akan pengetahuan.',
+                personality: 'Self-aware, bijaksana, komunikator yang baik, damai, dan pencinta harmoni.',
+                colors: ['#4169E1', '#191970'],
+                background: 'linear-gradient(45deg, #4169E1, #191970)'
+            },
+            'fluorite': {
+                name: '💚 Fluorite',
+                description: 'Energi penyerap negatif dan peningkat kepercayaan diri. Kamu memiliki kemampuan alami untuk menyerap stres dan energi negatif dari lingkungan, sambil meningkatkan rasa percaya diri dan fokus mental.',
+                personality: 'Percaya diri, fokus, penyerap stress, stabil, dan pemberi energi positif.',
+                colors: ['#40E0D0', '#00CED1'],
+                background: 'linear-gradient(45deg, #40E0D0, #00CED1)'
+            },
+            'rhodonite': {
+                name: '🩷 Rhodonite',
+                description: 'Aura compassion dan penyembuhan emosional. Kamu memiliki kemampuan luar biasa untuk menyembuhkan trauma emosional dan luka masa lalu, baik untuk diri sendiri maupun orang lain. Hati yang penuh belas kasih.',
+                personality: 'Penyembuh emosional, compassionate, empati tinggi, supportive, dan pemberi kekuatan.',
+                colors: ['#BC8F8F', '#CD5C5C'],
+                background: 'linear-gradient(45deg, #BC8F8F, #CD5C5C)'
+            },
+            'smokey-quartz': {
+                name: '🖤 Smokey Quartz',
+                description: 'Energi penyembuhan ketakutan dan negativitas. Kamu memiliki kekuatan untuk mengubah ketakutan, depresi, dan kecemasan menjadi kekuatan positif. Jiwa yang tabah dan mampu bangkit dari kesulitan.',
+                personality: 'Resilient, penyembuh ketakutan, kuat mental, transformatif, dan pemberi harapan.',
+                colors: ['#696969', '#2F4F4F'],
+                background: 'linear-gradient(45deg, #696969, #2F4F4F)'
+            }
+        };
+
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        function updateProgress() {
+            const progress = (currentStep / 7) * 100; // 7 total steps (0-landing, 1-6 challenges, 7-result)
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function showSection(stepIndex) {
+            document.querySelectorAll('.section').forEach((section, index) => {
+                section.classList.toggle('active', index === stepIndex);
+            });
+            
+            updateProgress();
+            updateNavButtons();
+        }
+
+        function updateNavButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.disabled = currentStep === 0;
+            nextBtn.style.display = currentStep === 7 ? 'none' : 'flex';
+        }
+
+        function startJourney() {
+            currentStep = 1;
+            showSection(1);
+        }
+
+        function selectChoice(step, choice, element) {
+            console.log(`=== PILIHAN DIPILIH ===`);
+            console.log(`Step: ${step}, Choice: ${choice}`);
+            console.log(`CurrentStep sebelum: ${currentStep}`);
+            console.log(`Element clicked:`, element);
+            
+            // Simpan pilihan
+            choices[step] = choice;
+            console.log(`Choices sekarang:`, choices);
+            
+            // Remove previous selections untuk step ini
+            const challengeSection = document.getElementById(`challenge${step}`);
+            if (challengeSection) {
+                challengeSection.querySelectorAll('.choice-card').forEach(card => {
+                    card.classList.remove('selected');
+                });
+            }
+            
+            // Add selection to clicked card
+            element.classList.add('selected');
+            console.log(`✅ Kartu terpilih untuk step ${step}`);
+            
+            // Determine next action
+            setTimeout(() => {
+                console.log(`⏰ Timeout executed for step ${step}`);
+                
+                // Cek apakah ini pertanyaan terakhir
+                if (step === 6) {
+                    console.log(`📊 Step 6 selesai - menghitung hasil`);
+                    calculateResult();
+                } else if (step >= 1 && step <= 5) {
+                    console.log(`➡️ Step ${step} selesai - lanjut ke step ${step + 1}`);
+                    moveToNextQuestion();
+                } else {
+                    console.error(`❌ Unexpected step: ${step}`);
+                }
+            }, 800);
+        }
+
+        function moveToNextQuestion() {
+            console.log(`=== MOVE TO NEXT QUESTION ===`);
+            console.log(`Current step before: ${currentStep}`);
+            
+            if (currentStep < 6) {
+                currentStep++;
+                console.log(`✅ Moved to step: ${currentStep}`);
+                showSection(currentStep);
+            } else {
+                console.log(`❌ Already at max step, calculating result`);
+                calculateResult();
+            }
+        }
+
+        function nextStep() {
+            console.log(`=== NEXT STEP (Manual) ===`);
+            console.log(`Current step: ${currentStep}`);
+            
+            if (currentStep < 7) {
+                currentStep++;
+                console.log(`✅ Manual next to step: ${currentStep}`);
+                showSection(currentStep);
+            } else {
+                console.log(`❌ Already at final step`);
+            }
+        }
+
+        function previousStep() {
+            console.log(`=== PREVIOUS STEP ===`);
+            console.log(`Current step: ${currentStep}`);
+            
+            if (currentStep > 0) {
+                currentStep--;
+                console.log(`✅ Back to step: ${currentStep}`);
+                showSection(currentStep);
+            } else {
+                console.log(`❌ Already at first step`);
+            }
+        }
+
+        function startJourney() {
+            console.log(`=== START JOURNEY ===`);
+            console.log('Memulai perjalanan...');
+            currentStep = 1;
+            showSection(1);
+        }
+
+        // Track section mapping
+        const sectionMapping = {
+            0: 'landing',
+            1: 'challenge1',
+            2: 'challenge2', 
+            3: 'challenge3',
+            4: 'challenge4',
+            5: 'challenge5',
+            6: 'challenge6',
+            7: 'result'
+        };
+
+        function showSection(stepIndex) {
+            console.log(`=== SHOW SECTION ===`);
+            console.log(`Target step index: ${stepIndex}`);
+            console.log(`Target section should be: ${sectionMapping[stepIndex]}`);
+            
+            // Hide all sections first
+            document.querySelectorAll('.section').forEach((section, index) => {
+                section.classList.remove('active');
+                console.log(`Hidden section ${index}: ${section.id}`);
+            });
+            
+            // Show target section by ID instead of index
+            const targetSectionId = sectionMapping[stepIndex];
+            if (targetSectionId) {
+                const targetSection = document.getElementById(targetSectionId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                    console.log(`✅ Showed section: ${targetSectionId}`);
+                    
+                    // Auto scroll
+                    setTimeout(() => {
+                        targetSection.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        console.log(`Scrolled to: ${targetSectionId}`);
+                    }, 100);
+                } else {
+                    console.error(`❌ Section not found: ${targetSectionId}`);
+                }
+            } else {
+                console.error(`❌ No mapping for step: ${stepIndex}`);
+            }
+            
+            updateProgress();
+            updateNavButtons();
+        }
+
+        function calculateResult() {
+            console.log('Menghitung hasil aura...', choices);
+            
+            // Sistem scoring untuk setiap kristal berdasarkan 6 pertanyaan
+            const crystalScores = {
+                'rose-quartz': 0,
+                'amethyst': 0,
+                'citrine': 0,
+                'black-obsidian': 0,
+                'selenite': 0,
+                'tigers-eye': 0,
+                'lapis-lazuli': 0,
+                'fluorite': 0,
+                'rhodonite': 0,
+                'smokey-quartz': 0
+            };
+            
+            // Pertanyaan 1: Tempat favorit
+            if (choices[1] === 'beach') {
+                crystalScores['fluorite'] += 3;
+                crystalScores['lapis-lazuli'] += 2;
+                crystalScores['selenite'] += 2;
+            } else if (choices[1] === 'night-sea') {
+                crystalScores['amethyst'] += 3;
+                crystalScores['lapis-lazuli'] += 3;
+                crystalScores['selenite'] += 2;
+            } else if (choices[1] === 'mountain') {
+                crystalScores['tigers-eye'] += 3;
+                crystalScores['smokey-quartz'] += 2;
+                crystalScores['black-obsidian'] += 2;
+            } else if (choices[1] === 'forest') {
+                crystalScores['rose-quartz'] += 3;
+                crystalScores['fluorite'] += 2;
+                crystalScores['rhodonite'] += 2;
+            }
+            
+            // Pertanyaan 2: Waktu favorit
+            if (choices[2] === 'morning') {
+                crystalScores['citrine'] += 3;
+                crystalScores['selenite'] += 2;
+                crystalScores['tigers-eye'] += 2;
+            } else if (choices[2] === 'afternoon') {
+                crystalScores['fluorite'] += 3;
+                crystalScores['citrine'] += 2;
+                crystalScores['rose-quartz'] += 1;
+            } else if (choices[2] === 'night') {
+                crystalScores['amethyst'] += 3;
+                crystalScores['lapis-lazuli'] += 3;
+                crystalScores['black-obsidian'] += 2;
+            } else if (choices[2] === 'rain') {
+                crystalScores['smokey-quartz'] += 3;
+                crystalScores['rhodonite'] += 2;
+                crystalScores['amethyst'] += 2;
+            }
+            
+            // Pertanyaan 3: Perasaan saat ini
+            if (choices[3] === 'calm') {
+                crystalScores['selenite'] += 3;
+                crystalScores['amethyst'] += 2;
+                crystalScores['rose-quartz'] += 2;
+            } else if (choices[3] === 'energetic') {
+                crystalScores['citrine'] += 3;
+                crystalScores['tigers-eye'] += 2;
+                crystalScores['fluorite'] += 2;
+            } else if (choices[3] === 'focused') {
+                crystalScores['tigers-eye'] += 3;
+                crystalScores['fluorite'] += 3;
+                crystalScores['black-obsidian'] += 2;
+            } else if (choices[3] === 'hopeful') {
+                crystalScores['rose-quartz'] += 3;
+                crystalScores['rhodonite'] += 2;
+                crystalScores['smokey-quartz'] += 2;
+            }
+            
+            // Pertanyaan 4: Elemen favorit
+            if (choices[4] === 'earth') {
+                crystalScores['tigers-eye'] += 3;
+                crystalScores['smokey-quartz'] += 2;
+                crystalScores['black-obsidian'] += 2;
+            } else if (choices[4] === 'water') {
+                crystalScores['lapis-lazuli'] += 3;
+                crystalScores['fluorite'] += 2;
+                crystalScores['selenite'] += 2;
+            } else if (choices[4] === 'fire') {
+                crystalScores['citrine'] += 3;
+                crystalScores['tigers-eye'] += 2;
+                crystalScores['black-obsidian'] += 1;
+            } else if (choices[4] === 'air') {
+                crystalScores['selenite'] += 3;
+                crystalScores['amethyst'] += 2;
+                crystalScores['fluorite'] += 2;
+            }
+            
+            // Pertanyaan 5: Aktivitas favorit
+            if (choices[5] === 'meditate') {
+                crystalScores['amethyst'] += 3;
+                crystalScores['selenite'] += 3;
+                crystalScores['lapis-lazuli'] += 2;
+            } else if (choices[5] === 'create') {
+                crystalScores['citrine'] += 3;
+                crystalScores['fluorite'] += 2;
+                crystalScores['rose-quartz'] += 2;
+            } else if (choices[5] === 'help') {
+                crystalScores['rose-quartz'] += 3;
+                crystalScores['rhodonite'] += 3;
+                crystalScores['amethyst'] += 2;
+            } else if (choices[5] === 'explore') {
+                crystalScores['tigers-eye'] += 3;
+                crystalScores['citrine'] += 2;
+                crystalScores['black-obsidian'] += 2;
+            }
+            
+            // Pertanyaan 6: Tantangan hidup
+            if (choices[6] === 'fear') {
+                crystalScores['smokey-quartz'] += 3;
+                crystalScores['tigers-eye'] += 2;
+                crystalScores['black-obsidian'] += 2;
+            } else if (choices[6] === 'stress') {
+                crystalScores['amethyst'] += 3;
+                crystalScores['fluorite'] += 3;
+                crystalScores['selenite'] += 2;
+            } else if (choices[6] === 'confidence') {
+                crystalScores['citrine'] += 3;
+                crystalScores['tigers-eye'] += 3;
+                crystalScores['fluorite'] += 2;
+            } else if (choices[6] === 'clarity') {
+                crystalScores['selenite'] += 3;
+                crystalScores['lapis-lazuli'] += 3;
+                crystalScores['amethyst'] += 2;
+            }
+            
+            // Temukan kristal dengan skor tertinggi
+            let maxScore = 0;
+            let selectedCrystal = 'amethyst';
+            
+            for (let crystal in crystalScores) {
+                if (crystalScores[crystal] > maxScore) {
+                    maxScore = crystalScores[crystal];
+                    selectedCrystal = crystal;
+                }
+            }
+            
+            console.log('Crystal scores:', crystalScores);
+            console.log(`Kristal terpilih: ${selectedCrystal} dengan skor: ${maxScore}`);
+            
+            displayResult(selectedCrystal);
+        }
+
+        function displayResult(auraType) {
+            console.log(`Menampilkan hasil: ${auraType}`);
+            const aura = auraTypes[auraType];
+            const auraDisplay = document.getElementById('auraDisplay');
+            const auraInner = document.getElementById('auraInner');
+            const auraName = document.getElementById('auraName');
+            const auraDescription = document.getElementById('auraDescription');
+            
+            auraDisplay.style.background = aura.background;
+            auraInner.style.background = `rgba(255, 255, 255, 0.2)`;
+            auraName.textContent = aura.name;
+            auraName.style.background = aura.background;
+            auraName.style.webkitBackgroundClip = 'text';
+            auraName.style.webkitTextFillColor = 'transparent';
+            
+            // Gabungkan deskripsi kristal dan kepribadian
+            const fullDescription = aura.description + '\n\n✨ Kepribadianmu: ' + aura.personality;
+            auraDescription.textContent = fullDescription;
+            auraDescription.style.whiteSpace = 'pre-line'; // Untuk menampilkan line breaks
+            
+            currentStep = 7;
+            showSection(7);
+        }
+
+        function nextStep() {
+            if (currentStep < 4) {
+                currentStep++;
+                showSection(currentStep);
+            }
+        }
+
+        function previousStep() {
+            if (currentStep > 0) {
+                currentStep--;
+                showSection(currentStep);
+            }
+        }
+
+        function restart() {
+            console.log('Memulai ulang...');
+            currentStep = 0;
+            choices = {};
+            document.querySelectorAll('.choice-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            showSection(0);
+        }
+
+        function viewBracelets() {
+            console.log('Melihat gelang kristal...');
+            alert('Fitur ini akan mengarahkan ke halaman produk gelang kristal aura!');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            updateProgress();
+            updateNavButtons();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') previousStep();
+            if (e.key === 'ArrowRight') nextStep();
+        });
+    </script>
+</body>
+</html>
